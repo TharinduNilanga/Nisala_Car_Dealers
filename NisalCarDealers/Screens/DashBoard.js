@@ -2,7 +2,7 @@ import { ImageBackground, StyleSheet, Text, View,TouchableOpacity } from "react-
 import { NativeBaseProvider, Input, VStack, Button } from 'native-base'
 import React from 'react'
 
-export default function DashBoard() {
+export default function DashBoard({navigation}) {
   return (
     <NativeBaseProvider>
     <View style={styles.container}>
@@ -11,7 +11,7 @@ export default function DashBoard() {
                <TouchableOpacity style={styles.btn} >
                     <Text  style={styles.text}>View Cars</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btn} >
+                <TouchableOpacity style={styles.btn} onPress={()=>{navigation.navigate('AddCar')}} >
                     <Text  style={styles.text}>Manage Cars</Text>
                 </TouchableOpacity >
                 <TouchableOpacity style={styles.btn}>

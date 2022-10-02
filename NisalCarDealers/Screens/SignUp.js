@@ -1,18 +1,80 @@
-import { View, Text,ImageBackground ,StyleSheet,TouchableOpacity} from 'react-native'
-import React from 'react'
+import { View, Text,ImageBackground ,StyleSheet,TouchableOpacity,Alert} from 'react-native'
+import React, { useState } from 'react'
 import {  NativeBaseProvider,VStack,Input, } from 'native-base';
 
-export default function SignUp() {
+export default function SignUp({navigation}) {
+    const [userName,setUserName]= useState('')
+    const [email,setEmail]= useState('')
+    const [password,setPassword]= useState('')
+
+    const fetchData=()=>{
+        fetch('http://192.168.8.106:4000/user',{
+            method:'POST',
+            body:JSON.stringify({
+                userName:userName,
+                email:email,
+                password:password
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+        .then((response) => {Alert.alert("User Saved Successfully !")})
+        .catch((err)=>{Alert.alert("Error occured !")})
+    }
+
   return (
 <NativeBaseProvider>
     <View style={style.container}>
         <ImageBackground source={require('../assets/car2.jpg')} resizeMode="cover" style={style.image}  >
             <View style={style.form}> 
                 <VStack space={7}  w="75%" maxW="300px" mx="auto" mt="20%" style={{alignItems:'center',justifyContent:'center'}}>
-                    <Input type='text' style={{ borderWidth:1,borderColor:'black'}} size="md" placeholder="userName"  />
-                    <Input type='text' style={{ borderWidth:1,borderColor:'black'}} size="md" placeholder="email"  />
-                    <Input type='text'  style={{borderWidth:1,borderColor:'black'}} size="md" placeholder="password" />
-                    <TouchableOpacity style={style.btn}>
+                    <Input 
+                        type='text' 
+                        style={{ borderWidth:1,borderColor:'black'}} 
+                        size="md" 
+                        placeholder="userName" 
+                        value={userName}
+                        onChangeText={(e)=>{
+                            setUserName(e)
+                        }}
+
+                     />
+                    <Input 
+                        type='text'
+                        style={{ borderWidth:1,borderColor:'black'}} 
+                        size="md" 
+                        placeholder="email" 
+                        value={email}
+                        onChangeText={(e)=>{
+                            setEmail(e)
+                        }}
+                    
+                    />
+                    <Input 
+                        type='text'  
+                        style={{borderWidth:1,borderColor:'black'}} 
+                        size="md" 
+                        placeholder="password" 
+                        value={password}
+                        onChangeText={(e)=>{
+                            setPassword(e)
+                        }}
+                    />
+                    <TouchableOpacity 
+                        style={style.btn} 
+                        onPress={(e)=>{
+                            fetchData()
+                            setUserName('')
+                            setEmail('')
+                            setPassword('')
+                            // if(fetchData()){
+                            //     // navigation.navigate('LoginScreen')
+                            //     console.log("ok")
+                            // }
+                            
+                        }}
+                    >
                             <Text style={{fontWeight:'bold',color:'white'}}>Sign Up</Text>
                     </TouchableOpacity>
                    
