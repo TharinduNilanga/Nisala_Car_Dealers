@@ -9,6 +9,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AddCar from './Screens/AddCar'
 import view from './Screens/view'
+import LoadCar from './Screens/LoadCar'
+import UpdateDeleteCar from './Screens/UpdateDeleteCar'
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -21,6 +23,8 @@ export default function App() {
         <Stack.Screen name="SignUp"   component={SignUp} />
         <Stack.Screen name="DashBoard"   component={DashBoard} />
         <Stack.Screen name="AddCar"   component={AddCar} />
+        <Stack.Screen name="LoadCar"   component={LoadCar} />
+        <Stack.Screen name="UpdateDeleteCar"   component={UpdateDeleteCar} />
       </Stack.Navigator>
  </NavigationContainer>
     

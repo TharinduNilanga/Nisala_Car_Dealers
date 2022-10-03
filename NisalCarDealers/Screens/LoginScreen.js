@@ -27,7 +27,7 @@ export default function LoginScreen({navigation}) {
                 setEmail('')
                 setPassword('')
             }
-            else if(res==false){
+            else if(res===false){
                 Alert.alert('Please check email & password');
             }
         })

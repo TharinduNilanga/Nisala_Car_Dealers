@@ -7,16 +7,16 @@ export default function DashBoard({navigation}) {
     <NativeBaseProvider>
     <View style={styles.container}>
         <ImageBackground source={require('../assets/car1.jpg')} resizeMode="cover" style={styles.image}>
-            <VStack space={7}  w="75%" maxW="300px" mx="auto" mt="20%" style={{alignItems:'center',justifyContent:'center'}}>
-               <TouchableOpacity style={styles.btn} >
+            <VStack space={7}  w="75%" maxW="300px" mx="auto" mt="5%" style={{alignItems:'center',justifyContent:'center'}}>
+               <TouchableOpacity style={styles.btn} onPress={()=>{navigation.navigate('LoadCar')}} >
                     <Text  style={styles.text}>View Cars</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.btn} onPress={()=>{navigation.navigate('AddCar')}} >
-                    <Text  style={styles.text}>Manage Cars</Text>
+                    <Text  style={styles.text}  >Manage Cars</Text>
                 </TouchableOpacity >
-                <TouchableOpacity style={styles.btn}>
+                {/* <TouchableOpacity style={styles.btn}>
                     <Text  style={styles.text}>Manage Account</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </VStack>
                 {/* <TouchableOpacity >
                     <Text  style={styles.text}>Inside</Text>

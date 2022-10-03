@@ -20,7 +20,7 @@ router.post('/',async(req,res)=>{
        password:req.body.password
    })
     try {
-        const response=await user.save(user);
+        const response=await user.save();
         res.json(response)
     }catch (err) {
         res.send("error :"+err)
@@ -30,7 +30,7 @@ router.post('/search/',async(req,res)=>{
     const email=req.body.email;
     const password=req.body.password;
     try {
-        console.log("ok")
+
         const search= await User.find();
         for (const u of search){
             if(email===u.email && password===u.password){

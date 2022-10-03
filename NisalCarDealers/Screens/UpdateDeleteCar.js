@@ -7,7 +7,7 @@ import { HStack } from 'native-base';
 import DatePicker from 'react-native-date-picker'
 
 
-export default function AddCar() {
+export default function UpdateDeleteCar({route}) {
   const [date, setDate] = useState(new Date())
   const [open, setOpen] = useState(false)
 
@@ -17,12 +17,22 @@ export default function AddCar() {
   const [description,setDescription]=useState('');
   const [img,setImg]=useState('');
 
+useEffect(()=>{
+    console.log(route.params.obj)
+    const car=route.params.obj;
+    const regNo=car.regNo;
 
+    setRegNo(car.regNo)
+    setNewDate(car.date)
+    setLocation(car.location)
+    setDescription(car.description)
+    setImg(car.img)
+},[])
   
-  const saveData=()=>{
-    console.log(regNo , newDate , location ,description ,img)
+ 
+  const updateData=()=>{
     fetch('http://192.168.8.106:4000/car',{
-      method:'POST',
+      method:'PUT',
       body:JSON.stringify({
         regNo:regNo,
         date:newDate,
@@ -33,48 +43,27 @@ export default function AddCar() {
       headers: {
           'Content-type': 'application/json; charset=UTF-8',
       }
-
     })
-
     .then((response) => {
-      Alert.alert("Car Saved Successfully !")
+      Alert.alert("Car Update Successfully !")
     })
     .catch((err)=>{Alert.alert("Error occured !")})
   }
-  // const updateData=()=>{
-  //   fetch('http://192.168.8.106:4000/car',{
-  //     method:'PUT',
-  //     body:JSON.stringify({
-  //       regNo:regNo,
-  //       date:newDate,
-  //       location:location,
-  //       description:description,
-  //       img:img
-  //     }),
-  //     headers: {
-  //         'Content-type': 'application/json; charset=UTF-8',
-  //     }
-  //   })
-  //   .then((response) => {
-  //     Alert.alert("Car Update Successfully !")
-  //   })
-  //   .catch((err)=>{Alert.alert("Error occured !")})
-  // }
-  // const deleteData=()=>{
-  //   fetch('http://192.168.8.106:4000/car',{
-  //     method:'DELETE',
-  //     body:JSON.stringify({
-  //       regNo:regNo
-  //     }),
-  //     headers: {
-  //         'Content-type': 'application/json; charset=UTF-8',
-  //     }
-  //   })
-  //   .then((response) => {
-  //     Alert.alert("Car Delete Successfully !")
-  //   })
-  //   .catch((err)=>{Alert.alert("Error occured !")})
-  // }
+  const deleteData=()=>{
+    fetch('http://192.168.8.106:4000/car',{
+      method:'DELETE',
+      body:JSON.stringify({
+        regNo:regNo
+      }),
+      headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+      }
+    })
+    .then((response) => {
+      Alert.alert("Car Delete Successfully !")
+    })
+    .catch((err)=>{Alert.alert("Error occured !")})
+  }
 
 
 
@@ -95,7 +84,7 @@ export default function AddCar() {
         {/* <View style={style.form}>  */}
             <NativeBaseProvider>
                     <VStack space={7}  w="75%" maxW="300px" mx="auto" mt="20%" style={{alignItems:'center',justifyContent:'center'}}>
-                      <Text style={{color:'gray',fontWeight:'bold',fontSize:40, textShadowColor: 'rgba(0, 0, 0, 0.8)', textShadowOffset: {width: -3, height: 1},textShadowRadius: 5}}>Add Car</Text>
+                      <Text style={{color:'gray',fontWeight:'bold',fontSize:30, textShadowColor: 'rgba(0, 0, 0, 0.8)', textShadowOffset: {width: -3, height: 1},textShadowRadius: 5}}>Update / Delete Car</Text>
                       <Input 
                         type='text' 
                         style={{ borderWidth:1,borderColor:'black'}} 
@@ -228,18 +217,7 @@ export default function AddCar() {
                      </View>
                      <View style={{width:'100%'}}>
                           <HStack  space={3}  w="75%" maxW="300px" mx="auto" style={{alignItems:'center',justifyContent:'center'}}>
-
-                          <TouchableOpacity 
-                              style={style.btn} 
-                              onPress={(e)=>{
-                                saveData()
-                                clear()
-                              }}
-                           
-                           >
-                            <Text style={{fontWeight:'bold',color:'white',fontSize:20}}>Save</Text>
-                        </TouchableOpacity>
-                        {/* <TouchableOpacity 
+                        <TouchableOpacity 
                               style={style.btnU}  
                               onPress={(e)=>{
                                 updateData()
@@ -256,7 +234,7 @@ export default function AddCar() {
                             }}
                         >
                             <Text style={{fontWeight:'bold',color:'white',fontSize:15}}>Delete</Text>
-                        </TouchableOpacity> */}
+                        </TouchableOpacity>
                           </HStack>
                      </View>
                      {/* <View style={{width:'100%',backgroundColor:'red'}}>
