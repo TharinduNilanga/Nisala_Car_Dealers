@@ -84,7 +84,7 @@ useEffect(()=>{
         {/* <View style={style.form}>  */}
             <NativeBaseProvider>
                     <VStack space={7}  w="75%" maxW="300px" mx="auto" mt="20%" style={{alignItems:'center',justifyContent:'center'}}>
-                      <Text style={{color:'gray',fontWeight:'bold',fontSize:30, textShadowColor: 'rgba(0, 0, 0, 0.8)', textShadowOffset: {width: -3, height: 1},textShadowRadius: 5}}>Update / Delete Car</Text>
+                      <Text style={{color:'gray',fontWeight:'bold',fontSize:30, textShadowColor: 'rgba(0, 0, 0, 0.8)', textShadowOffset: {width: -3, height: 1},textShadowRadius: 5,textDecorationLine:'underline'}}>Update / Delete Car</Text>
                       <Input 
                         type='text' 
                         style={{ borderWidth:1,borderColor:'black'}} 
@@ -117,10 +117,10 @@ useEffect(()=>{
                         style={style.imagepicker1} 
                         flexDirection='row'>
                            <Button 
-                              style={{width:'100%',height:48,backgroundColor:'#595959c0',alignItems:'center',justifyContent:'center'}} 
+                              style={{width:'100%',height:48,alignItems:'center',justifyContent:'center'}} 
                               title="Open" 
                               onPress={() => setOpen(true)} 
-                              variant='subtle' 
+                               colorScheme={'blueGray'}  
                             > 
                                 <Text style={{color:'white',fontWeight:'bold'}}>Date</Text>
                             </Button>
@@ -175,7 +175,7 @@ useEffect(()=>{
                      <View style={{width:'100%',height:'100%',flex:1,flexDirection:'row'}}>
                    
                         <Flex style={style.imagepicker1}>
-                          <View style={{width:'100%',height:150,borderWidth:1,borderColor:'black'}} >
+                          <View style={{width:'100%',height:130,borderWidth:1,borderColor:'black'}} >
                           <ImageBackground source={{uri:img}} resizeMode="center" style={style.img}  >
                             </ImageBackground>
 
@@ -190,10 +190,10 @@ useEffect(()=>{
                         </Flex>
                         <Flex  style={style.imagepicker1} flexDirection='row'>
                           
-                           <Flex style={{width:'100%',height:'100%',marginLeft:'1%',marginTop:48}}>
+                           <Flex style={{width:'100%',height:'100%',marginLeft:'1%',marginTop:35}}>
                              <Button  
-                                style={{height:48,backgroundColor:'#595959c0',alignItems:'center',justifyContent:'center'}}
-                                variant='outline'
+                                style={{height:48,alignItems:'center',justifyContent:'center'}}
+                                colorScheme={'blueGray'}  
                                 onPress={async(e)=>{
       
                                   const result = await launchImageLibrary(

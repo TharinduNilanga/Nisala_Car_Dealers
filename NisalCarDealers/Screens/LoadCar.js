@@ -35,7 +35,7 @@ export default function LoadCar({navigation}) {
 
   return (
     <NativeBaseProvider>
-        <View style={{padding:10}}> 
+        <View style={{padding:20}}> 
            <View style={{width:'100%',height:'5%',marginBottom:'10%',display:'flex',flexDirection:'row'}}>
             
            <Flex style={style.imagepicker1}>
