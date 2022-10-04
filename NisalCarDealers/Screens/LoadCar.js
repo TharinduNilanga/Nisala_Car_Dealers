@@ -129,6 +129,9 @@ export default function LoadCar({navigation}) {
                         style={{marginTop:'3%'}} 
                         size="md" 
                         colorScheme={'info'}
+                        onPress={()=> 
+                          navigation.navigate('MoreDetails',{obj:item})
+                       }
                        
                         >
                         <Text style={{color:'white',fontWeight:'bold'}}>See More</Text>

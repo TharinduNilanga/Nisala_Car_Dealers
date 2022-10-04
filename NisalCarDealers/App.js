@@ -11,6 +11,7 @@ import AddCar from './Screens/AddCar'
 import view from './Screens/view'
 import LoadCar from './Screens/LoadCar'
 import UpdateDeleteCar from './Screens/UpdateDeleteCar'
+import MoreDetails from './Screens/MoreDetails'
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
         <Stack.Screen name="AddCar"   component={AddCar} />
         <Stack.Screen name="LoadCar"   component={LoadCar} />
         <Stack.Screen name="UpdateDeleteCar"   component={UpdateDeleteCar} />
+        <Stack.Screen name="MoreDetails"   component={MoreDetails} />
       </Stack.Navigator>
  </NavigationContainer>
     
